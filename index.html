@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GCP Template Filler</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#0a2740;--navy2:#103a5c;--cyan:#41d1e8;--amber:#f5a83a;--amber-ink:#2a1900;
+  --bg:#eef3f7;--card:#ffffff;--ink:#14212d;--mute:#587084;--line:#d6e0e8;--chip:#e4f6fa;--chip-ink:#0b6a7c;
+  color-scheme:light}
+@media (prefers-color-scheme:dark){:root{
+  --bg:#0c141b;--card:#15212b;--ink:#e7eef4;--mute:#92a6b7;--line:#2a3b4a;--chip:#12313b;--chip-ink:#7fe0f0;color-scheme:dark}}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 "Manrope","Segoe UI",system-ui,-apple-system,Roboto,Arial,sans-serif}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--amber);outline-offset:3px}
+
+/* hero */
+.hero{position:relative;overflow:hidden;color:#fff;background:linear-gradient(135deg,var(--navy) 0%,var(--navy2) 100%);padding:64px 20px 88px}
+.hero svg.topo{position:absolute;right:-120px;top:-80px;width:760px;max-width:none;opacity:.9;pointer-events:none}
+.hero-in{position:relative;max-width:900px;margin:0 auto}
+.mark{display:inline-flex;align-items:center;gap:10px;font-weight:700;font-size:.95rem;color:var(--cyan);margin-bottom:18px}
+.mark svg{width:26px;height:26px}
+h1{font-size:clamp(2.2rem,6vw,3.6rem);line-height:1.05;margin:0 0 16px;font-weight:800;letter-spacing:-.025em;max-width:14ch}
+.lead{font-size:1.12rem;color:#c3d6e4;max-width:56ch;margin:0 0 30px}
+.cta{display:inline-flex;align-items:center;gap:10px;background:var(--amber);color:var(--amber-ink);font-weight:800;font-size:1.05rem;text-decoration:none;padding:15px 30px;border-radius:999px;box-shadow:0 10px 26px rgba(245,168,58,.35);transition:transform .15s,box-shadow .15s}
+.cta:hover{transform:translateY(-2px);box-shadow:0 14px 30px rgba(245,168,58,.45)}
+.cta svg{width:18px;height:18px}
+.facts{display:flex;flex-wrap:wrap;gap:10px;margin:28px 0 0;padding:0;list-style:none}
+.facts li{border:1px solid rgba(255,255,255,.22);border-radius:999px;padding:5px 14px;font-size:.88rem;color:#d7e6f1}
+
+/* content */
+main{max-width:900px;margin:-44px auto 0;padding:0 20px 56px;position:relative}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:26px;margin-bottom:20px;box-shadow:0 8px 28px rgba(10,39,64,.08)}
+h2{font-size:1.3rem;margin:0 0 4px;font-weight:800;letter-spacing:-.01em}
+.sub{color:var(--mute);margin:0 0 20px}
+.steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;counter-reset:s}
+.steps li{counter-increment:s;position:relative;border:1px solid var(--line);border-radius:12px;padding:16px 16px 16px 58px;background:var(--bg)}
+.steps li::before{content:counter(s);position:absolute;left:14px;top:14px;width:32px;height:32px;border-radius:50%;background:var(--navy);color:var(--cyan);font-weight:800;display:grid;place-items:center}
+@media (prefers-color-scheme:dark){.steps li::before{background:var(--cyan);color:var(--navy)}}
+.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px}
+.two .panel{margin:0}
+.two + .panel{margin-top:20px}
+ul.tick{list-style:none;margin:0;padding:0}
+ul.tick li{position:relative;padding-left:28px;margin-bottom:10px}
+ul.tick li::before{content:"";position:absolute;left:0;top:.45em;width:14px;height:8px;border-left:3px solid var(--cyan);border-bottom:3px solid var(--cyan);transform:rotate(-45deg)}
+code{background:var(--chip);color:var(--chip-ink);border-radius:6px;padding:2px 7px;font-size:.88em;font-family:Consolas,"SFMono-Regular",monospace}
+footer{text-align:center;color:var(--mute);font-size:.9rem;padding:0 20px 40px}
+@media (max-width:560px){.hero{padding:44px 18px 76px}.hero svg.topo{width:520px;right:-200px}.panel{padding:20px}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+
+<header class="hero">
+<svg class="topo" viewBox="0 0 760 760" fill="none" stroke="#41d1e8" stroke-opacity=".16" stroke-width="1.5" aria-hidden="true">
+<g transform="rotate(-24 380 380)">
+<ellipse cx="380" cy="380" rx="60" ry="38"/><ellipse cx="380" cy="380" rx="110" ry="72"/>
+<ellipse cx="380" cy="380" rx="162" ry="108"/><ellipse cx="380" cy="380" rx="216" ry="146"/>
+<ellipse cx="380" cy="380" rx="272" ry="186"/><ellipse cx="380" cy="380" rx="330" ry="228"/>
+<ellipse cx="380" cy="380" rx="372" ry="268"/>
+</g></svg>
+<div class="hero-in">
+<div class="mark">
+<svg viewBox="0 0 26 26" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="13" cy="13" r="6"/><path d="M13 1v7M13 18v7M1 13h7M18 13h7"/></svg>
+Control Point Description
+</div>
+<h1>GCP Template Filler</h1>
+<p class="lead">Fill your Control Point Description templates automatically from Control.xlsx. Layout, logos and photos stay exactly as in your template.</p>
+<a class="cta" href="https://claude.ai/artifact/8FjY3QMKwiUC1ZUhh7smKf">Open the app
+<svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9h12M10 4l5 5-5 5"/></svg></a>
+<ul class="facts"><li>Runs in your browser</li><li>Many templates at once</li><li>Excel in, Excel out</li></ul>
+</div>
+</header>
+
+<main>
+<section class="panel">
+<h2>How to use it</h2>
+<p class="sub">Five steps from Control.xlsx to filled templates.</p>
+<ol class="steps">
+<li>Open the app with the button above.</li>
+<li>Choose or drop <code>Control.xlsx</code>.</li>
+<li>Choose or drop one or more <code>.xlsx</code> templates.</li>
+<li>Pick how to fill: matched by GCP number, or every GCP from each template.</li>
+<li>Press <strong>Fill templates</strong>, then <strong>Download results</strong>.</li>
+</ol>
+</section>
+
+<div class="two">
+<section class="panel">
+<h2>Before you start</h2>
+<p class="sub">Get these ready first.</p>
+<ul class="tick">
+<li>Templates must be <code>.xlsx</code>. Save old <code>.xls</code> files as Excel Workbook first.</li>
+<li>Name each template with its GCP number, for example <code>NS_JEEL_161.xlsx</code>.</li>
+<li>Control.xlsx needs GCP_No, Easting, Northing, Longitude, Latitude, Ellip_Height, Geoid_Separation and Ortho_Height (or Elevation).</li>
+<li>You need internet access and a signed-in claude.ai account.</li>
+</ul>
+</section>
+<section class="panel">
+<h2>PDF output</h2>
+<p class="sub">Need PDFs instead?</p>
+<p>The app creates Excel files. To make PDFs named after the GCP No, open the filled files in Excel and use <strong>File &gt; Export &gt; Create PDF/XPS</strong>.</p>
+</section>
+</div>
+
+</main>
+
+<footer>Having trouble? See the setup guide in this repository.</footer>
+</body>
+</html>
